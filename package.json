@@ -1,0 +1,18 @@
+{
+  "name": "seat-pokeapi-viewer",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "test": "vitest --run"
+  },
+  "devDependencies": {
+    "jsdom": "^25.0.1",
+    "less": "^4.2.0",
+    "vite": "^5.4.2",
+    "vitest": "^2.1.3"
+  }
+}
