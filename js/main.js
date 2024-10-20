@@ -1,6 +1,7 @@
 import '../assets/css/styles.less'
 import { debounce } from "./utilities/debounce";
 import { fetchPokemonList, getPokemonFetchedData } from './api.js';
+import { renderPokemonsList } from './ui.js';
 
 const loadNextPokemonBatch = () => {
   console.log('loadPokemon');
@@ -31,11 +32,20 @@ const handleColorClick = () => {
 
 (async function initApp() {
   const initialBatch = await getPokemonFetchedData({ pokemonList: await fetchPokemonList()});
-  console.log('initialBatch', initialBatch);
-  document.getElementById('load-more').addEventListener('click', loadNextPokemonBatch);
-  document.getElementById('apply-filters').addEventListener('click', applyFilters);
-  document.getElementById('pokemon-list').addEventListener('click', showPokemonDetails);
-  document.querySelector('.modal .close').addEventListener('click', closeModal);
-  document.getElementById('search-input').addEventListener('input', debounce(handleSearch, 500));
-  document.getElementById('color-filter').addEventListener('click', handleColorClick);
+
+  const loadMoreButton = document.getElementById('load-more');
+  const applyFiltersButton = document.getElementById('apply-filters');
+  const pokemonListNode = document.getElementById('pokemon-list');
+  const modalCloseButton = document.querySelector('.modal .close');
+  const searchInputNode = document.getElementById('search-input');
+  const colorFilterNode = document.getElementById('color-filter');
+
+  renderPokemonsList({ pokemonList: initialBatch, node: pokemonListNode });
+
+  loadMoreButton.addEventListener('click', loadNextPokemonBatch);
+  applyFiltersButton.addEventListener('click', applyFilters);
+  pokemonListNode.addEventListener('click', showPokemonDetails);
+  modalCloseButton.addEventListener('click', closeModal);
+  searchInputNode.addEventListener('input', debounce(handleSearch, 500));
+  colorFilterNode.addEventListener('click', handleColorClick);
 })();

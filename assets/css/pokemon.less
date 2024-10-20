@@ -1,6 +1,12 @@
-@property --type-color {
+@property --typeColor {
   syntax: "<color>";
   inherits: true;
+  initial-value: #f5f5f5;
+}
+
+@property --secondary-typeColor {
+  syntax: "<color>";
+  inherits: false;
   initial-value: #f5f5f5;
 }
 
@@ -17,7 +23,7 @@
   --type-bug: #f8d5a3;
   --type-dragon: #97b3e6;
   --type-psychic: #eaeda1;
-  --type-flying: #f5f5f5;
+  --type-flying: #fafcfc;
   --type-fighting: #e6e0d4;
   --type-normal: #f5f5f5;
 
@@ -25,7 +31,7 @@
 }
 
 .pokemon:extend(.box-shadow) {
-  background-color: var(--type-color);
+  background: linear-gradient(to right bottom, var(--typeColor) 50%, var(--secondary-typeColor) 50%);
   border-radius: 10px;
   border: 8px solid var(--pokemon-border-card);
   display: flex;
@@ -45,7 +51,7 @@
   }
 
   &__img-container {
-    background-color: rgba(255, 255, 255, 0.6);
+    background-color: rgba(255, 255, 255, 1);
     border-radius: 50%;
     height: 120px;
     width: 120px;
