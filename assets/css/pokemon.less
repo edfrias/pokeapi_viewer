@@ -42,6 +42,10 @@
   padding: 20px;
   text-align: center;
 
+  &:focus-visible {
+    outline: 5px solid var(--pokemon-red);
+  }
+
   &__list {
     flex-grow: 1;
     display: grid;
@@ -53,14 +57,20 @@
   &__img-container {
     background-color: rgba(255, 255, 255, 1);
     border-radius: 50%;
+    border: 3px solid transparent;
     height: 120px;
     width: 120px;
     text-align: center;
+
+    &:hover {
+      border: 3px solid var(--pokemon-red);
+      cursor: pointer;
+    }
   }
 
   &__img {
     max-width: 90%;
-    margin-top: 20px;
+    margin-top: 10px;
   }
 
   &__info {

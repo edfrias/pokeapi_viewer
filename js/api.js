@@ -37,3 +37,8 @@ export async function getPokemonFetchedData({ pokemonList, offset, limit}) {
     return pokemonData;
   })).catch((error) => console.error(error));
 }
+
+export async function fetchPokemonDetails(pokemonId) {
+  const response = await fetch(`${POKEAPI_URL}/pokemon/${pokemonId}`)
+  return await response.json()
+}

@@ -2,9 +2,9 @@ import '../assets/css/styles.less'
 import { state } from './state';
 import { debounce } from "./utilities/debounce";
 import { fetchPokemonNationalData, getPokemonFetchedData } from './api.js';
-import { renderPokemonsList } from './ui.js';
+import { handleOpenModalWithAccessibilityKeys, renderPokemonsList, showPokemonDetails } from './ui.js';
 
-async function initApp() {
+const initApp = async () => {
   await fetchPokemonNationalData().then((res) => res.pokemon_entries);
   const initialBatch = await getPokemonFetchedData({
     pokemonList: state.allPokemon, offset: 0, limit: 20
@@ -15,16 +15,15 @@ async function initApp() {
   const loadMoreButton = document.getElementById('load-more');
   const applyFiltersButton = document.getElementById('apply-filters');
   const pokemonListNode = document.getElementById('pokemon-list');
-  const modalCloseButton = document.querySelector('.modal .close');
   const searchInputNode = document.getElementById('search-input');
   const colorFilterNode = document.getElementById('color-filter');
 
   renderPokemonsList({ pokemonList: initialBatch, node: pokemonListNode });
+  handleOpenModalWithAccessibilityKeys();
 
   loadMoreButton.addEventListener('click', loadNextPokemonBatchAndUpdateUI);
   applyFiltersButton.addEventListener('click', applyFilters);
-  pokemonListNode.addEventListener('click', showPokemonDetails);
-  modalCloseButton.addEventListener('click', closeModal);
+  pokemonListNode.addEventListener('click', handlePokemonImgClick);
   searchInputNode.addEventListener('input', debounce(handleSearch, 500));
   colorFilterNode.addEventListener('click', handleColorClick);
 };
@@ -50,26 +49,20 @@ const loadNextPokemonBatchAndUpdateUI = async () => {
   }
 
   renderPokemonsList({ pokemonList: state.pokemonList, node: pokemonListNode });
+  handleOpenModalWithAccessibilityKeys();
 };
-
-
 
 const applyFilters = () => {
   console.log('applyFilters');
 };
 
-const showPokemonDetails = () => {
-  console.log('showPokemonDetails');
-};
-
-const closeModal = () => {
-  console.log('closeModal');
+const handlePokemonImgClick = async (event) => {
+  const target = event.target;
+  await showPokemonDetails(target);
 };
 
 const handleSearch = async (event) => {
   const searchTerm = event?.target.value.trim().toLowerCase();
-
-
   console.log('handleSearchDebounced', searchTerm);
 };
 
