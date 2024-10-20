@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>SEAT - Pokémon Viewer</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="shortcut icon" href="./assets/public/favicon.ico">
+    <link rel="stylesheet/less" type="text/css" href="/assets/css/styles.less" />
+    <link  href="https://fonts.cdnfonts.com/css/pokemon-solid" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.cdnfonts.com/s/17890/Pokemon Solid.woff" crossorigin="anonymous" as="font" type="font/woff2" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+
+    <script src="https://cdn.jsdelivr.net/npm/less@4.2.0"></script>
+  </head>
+  <body>
+    <div id="app">
+      <header>
+        <h1>Pokémon Viewer</h1>
+      </header>
+
+      <main>
+        <aside id="filters" class="filters">
+          <div class="search__container">
+            <label class="filters__title" for="search-input">Search</label>
+            <input type="text" id="search-input" class="search__input" placeholder="Enter a pokémon name">
+          </div>
+          <hr />
+          <div>
+            <p class="filters__title">Filters</p>
+            <button class="filters__apply-filter-button" id="apply-filters">Apply Filters</button>
+            <div class="filters__filter-group">
+              <label>Color:</label>
+              <div id="color-filter" class="color-boxes"></div>
+            </div>
+            <div class="filters__filter-group">
+              <label>Gender:</label>
+              <div id="gender-filter" class="radio-group"></div>
+            </div>
+            <div class="filters__filter-group">
+              <label>Type:</label>
+              <div id="type-filter" class="checkbox-group"></div>
+            </div>
+          </div>
+        </aside>
+
+        <section class="main-section">
+          <button type="button" id="load-more" class="main-section__add-button">Load More</button>
+
+          <section id="pokemon-list" class="pokemon__list">
+            <div class="pokemon" style="--type-color: `--type-${type}`">
+              <div class="pokemon__img-container">
+                  <img class="pokemon__img" src="" alt="">
+              </div>
+              <div class="pokemon__info">
+                  <span class="pokemon__info__number">#002</span>
+                  <h3 class="pokemon__info__name">Ivysaur</h3>
+                  <small class="pokemon__info__type">Types: <span>grass</span></small>
+              </div>
+            </div>
+
+          </section>
+
+        </section>
+      </main>
+    </div>
+
+    <div id="modal" class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <div id="pokemon-details"></div>
+      </div>
+    </div>
+
+    <!-- <script type="module" src="/js/main.js"></script> -->
+  </body>
+</html>

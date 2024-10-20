@@ -1,0 +1,131 @@
+:root {
+  --pokemon-yellow: #edc351;
+  --shadow-blue: #425878;
+}
+
+// Mixins
+.flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.pokemon-text {
+  font-family: 'Pokemon Solid', sans-serif;
+  color: var(--pokemon-yellow);
+  text-shadow: -4px 0 var(--shadow-blue), 0 4px var(--shadow-blue), 4px 0 var(--shadow-blue), 0 -4px var(--shadow-blue), 6px 4px white;
+}
+
+.box-shadow {
+  box-shadow: 0 3px 15px rgba(100, 100, 100, .5);
+}
+
+// Color filter styles
+.color-boxes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+
+  .color-box {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    cursor: pointer;
+    border: 2px solid transparent;
+
+    &.selected {
+      border-color: var(--pokemon-red);
+    }
+
+    &.black { background-color: #000; }
+    &.blue { background-color: #0000FF; }
+    &.brown { background-color: #A52A2A; }
+    &.gray { background-color: #808080; }
+    &.green { background-color: #008000; }
+    &.pink { background-color: #FFC0CB; }
+    &.purple { background-color: #800080; }
+    &.red { background-color: #FF0000; }
+    &.white { background-color: #FFFFFF; border: 1px solid #ccc; }
+    &.yellow { background-color: #FFFF00; }
+  }
+}
+
+// Gender and Type filter styles
+.radio-group, .checkbox-group {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+
+  label {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+}
+
+
+
+// Modal styles
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.4);
+
+  .modal-content {
+    background-color: white;
+    margin: 15% auto;
+    padding: 20px;
+    border-radius: 5px;
+    width: 80%;
+    max-width: 600px;
+    position: relative;
+  }
+
+  .close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+
+    &:hover,
+    &:focus {
+      color: black;
+      text-decoration: none;
+      cursor: pointer;
+    }
+  }
+}
+
+// Accessibility
+button, input[type='text'], input[type='radio'], input[type='checkbox'] {
+  &:focus {
+    outline: 2px solid var(--pokemon-red);
+  }
+}
+
+// Responsive design
+@media (max-width: 768px) {
+  main {
+    flex-direction: column;
+  }
+
+  aside {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+
+  #pokemon-list {
+    padding-left: 0;
+  }
+}
+
+@import './scaffolding.less';
+@import './aside.less';
+@import './pokemon.less';

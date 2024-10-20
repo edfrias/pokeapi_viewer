@@ -1,0 +1,55 @@
+:root {
+  --pokemon-red: #e3350d;
+}
+
+body {
+  background-color: #7299a3;
+  font-family: 'Roboto', sans-serif;
+  font-size: 16px;
+  margin: 0;
+  padding: 0;
+}
+
+#app {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+header {
+  text-align: center;
+
+  h1:extend(.pokemon-text) {
+    font-size: 3rem;
+    margin: 0;
+  }
+}
+
+.button {
+  display: block;
+  margin: 0 auto;
+  padding: 10px 20px;
+  background-color: var(--pokemon-red);
+  color: white;
+  border: none;
+  border-radius: 2rem;
+  font-weight: bold;
+
+  &:hover {
+    background-color: #b32a0a;
+    box-shadow: 3px 2px white;
+  }
+}
+
+main {
+  display: flex;
+  max-width: 1440px;
+  min-height: 700px;
+}
+
+.main-section {
+  width: 100%;
+
+  // Load more button
+  &__add-button:extend(.button all) {}
+}
