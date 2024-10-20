@@ -11,7 +11,7 @@ function createPokemonMarkup(pokemon) {
       <div class="pokemon__info">
           <span class="pokemon__info__number">#${pokemon.id.toString().padStart(4, '0')}</span>
           <h3 class="pokemon__info__name">${pokemon.name}</h3>
-          <small class="pokemon__info__type">Types: <span>${pokemon.types.join(', ')}</span></small>
+          <small class="pokemon__info__type">Type: <span>${pokemon.types.join(', ')}</span></small>
       </div>
     </div>
   `
