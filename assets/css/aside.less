@@ -5,8 +5,40 @@
   background-color: white;
   border-radius: 5px;
   border: 8px solid var(--pokemon-border-card);
+  height: 100vh;
   padding: 24px;
+  position: sticky;
+  top: 24px;
   width: 200px;
+
+  &__title:extend(.pokemon-text) {
+    display: block;
+    font-size: 1.6rem;
+    margin-block: 0;
+    padding: 0;
+    text-align: left;
+  }
+
+  &__filter-group {
+    margin-bottom: 15px;
+
+    label {
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    input[type="text"] {
+      width: 100%;
+      padding: 5px;
+      border: 1px solid #ccc;
+      border-radius: 3px;
+    }
+  }
+
+  &__apply-filter-button:extend(.button all) {
+    margin-block: 1rem 2rem;
+    width: 100%;
+  }
 
   // SEARCH FORM
   .search {
@@ -37,37 +69,4 @@
     border-top: 2px solid var(--aside-border-bg);
     height: 0;
   }
-
-  // FILTERS
-  .filters {
-    &__title:extend(.pokemon-text) {
-      display: block;
-      font-size: 1.6rem;
-      margin-block: 0;
-      padding: 0;
-      text-align: left;
-    }
-
-    &__filter-group {
-      margin-bottom: 15px;
-
-      label {
-        display: block;
-        margin-bottom: 5px;
-      }
-
-      input[type="text"] {
-        width: 100%;
-        padding: 5px;
-        border: 1px solid #ccc;
-        border-radius: 3px;
-      }
-    }
-
-    &__apply-filter-button:extend(.button all) {
-      margin-block: 1rem 2rem;
-      width: 100%;
-    }
-  }
-
 }
