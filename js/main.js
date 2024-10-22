@@ -12,6 +12,7 @@ import { renderPokemonsList } from './ui/renderPokemonsList.js'
 import { resetFilters } from './ui/resetFilters.js';
 import { showPokemonDetails } from './ui/showPokemonDetails.js';
 import { debounce } from "./utilities/debounce";
+import { renderPokemonCounter } from './ui/renderPokemonCounter.js';
 
 const initApp = async () => {
   await fetchPokemonNationalData().then((res) => res.pokemon_entries);
@@ -31,6 +32,7 @@ const initApp = async () => {
   const resetFiltersButton = document.getElementById('reset-filters');
 
   renderPokemonsList({ pokemonList: initialBatch, node: pokemonListNode });
+  renderPokemonCounter();
 
   handleOpenModalWithAccessibilityKeys();
   resetFiltersButton.addEventListener('click', resetFilters);
@@ -53,7 +55,7 @@ const loadNextPokemonBatchAndUpdateUI = async () => {
   await getPokemonFetchedData({ pokemonList: state.allPokemon,
     offset: state.currentOffset, limit: state.limit });
 
-  state.currentOffset += state.limit;
+  state.currentOffset = state.pokemonList.length;
 
   if(state.currentOffset >= state.totalPokemon) {
     loadMoreButton.style.display = 'none';
@@ -62,6 +64,7 @@ const loadNextPokemonBatchAndUpdateUI = async () => {
   }
 
   renderPokemonsList({ pokemonList: state.pokemonList, node: pokemonListNode });
+  renderPokemonCounter();
   handleOpenModalWithAccessibilityKeys();
 };
 
@@ -90,6 +93,7 @@ export const applyFilters = async() => {
     offset: 0, limit: 1000 });
 
   renderPokemonsList({ pokemonList: state.pokemonList, node: pokemonListNode });
+  renderPokemonCounter();
 };
 
 initApp();

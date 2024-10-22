@@ -56,13 +56,20 @@ main {
     &__container {
       align-items: center;
       display: flex;
-      justify-content: center;
+      justify-content: space-between;
       margin-block-end: 1.5rem;
+      padding-inline: 48px;
+      width: 100%;
 
       .title:extend(.pokemon-text all) {
         font-size: 1.7em;
         line-height: 48px;
       }
+    }
+
+    &__field {
+      align-items: center;
+      display: flex;
     }
 
     &__input {
@@ -83,6 +90,18 @@ main {
       &:focus {
         outline: 1px solid var(--pokemon-red);
       }
+    }
+  }
+
+  .pokemon-count {
+    color: white;
+    display: flex;
+    font-size: .8em;
+    font-weight: bold;
+    justify-self: flex-start;
+
+    &__pokemon__number {
+      margin-inline-end: 6px;
     }
   }
 

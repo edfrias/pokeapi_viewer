@@ -16,7 +16,7 @@ export const getPokemonFetchedData = async ({ pokemonList, offset, limit}) => {
       types: details.types.map(t => t.type.name)
     }
 
-    state.pokemonList = [...state.pokemonList, pokemonData];
+    state.pokemonList = [...state.pokemonList, pokemonData].sort((a, b) => a.id - b.id);
 
     return pokemonData;
   })).catch((error) => console.error(error));
