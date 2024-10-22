@@ -2,6 +2,11 @@ import { POKEAPI_URL } from "../constants/pokemonUrl";
 import { state } from "../constants/state";
 
 export const getPokemonFetchedData = async ({ pokemonList, offset, limit}) => {
+  if( !pokemonList || offset === null || limit === null ) {
+    console.error('You need to provide proper entry data in order to fetch.');
+    return;
+  }
+
   const initialLoad =  pokemonList.slice(offset, offset + limit);
   state.currentOffset = offset + limit;
 
