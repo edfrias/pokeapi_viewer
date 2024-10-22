@@ -1,9 +1,10 @@
 import { createPokemonMarkup } from "./createPokemonMarkup";
 
 export const renderPokemonsList = ({ pokemonList, node }) => {
-  if (pokemonList.length === 0) {
-    listElement.innerHTML = '<p>No Pokémon found. Try different filters or search terms.</p>';
-    return
+  if (!pokemonList || pokemonList.length === 0) {
+    node.classList.add('no-results');
+    node.innerHTML = '<p class="no-results__text">No Pokémon found. Try different filters or search terms.</p>';
+    return;
   }
 
   if (!node || !(node instanceof Element)) {

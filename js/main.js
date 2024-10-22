@@ -13,6 +13,7 @@ import { renderPokemonCounter } from './ui/renderPokemonCounter.js';
 import { applyFilters } from './ui/applyFilters.js';
 import { handlePokemonImgClick } from './ui/handlePokemonImgClick.js';
 import { loadNextPokemonBatchAndUpdateUI } from './api/loadNextPokemonBatchAndUpdateUI.js';
+import { handleSearch } from './ui/handleSearch.js';
 
 const initApp = async () => {
   await fetchPokemonNationalData().then((res) => res.pokemon_entries);
@@ -30,21 +31,16 @@ const initApp = async () => {
   const colorFilterNode = document.getElementById('color-filter');
   const resetFiltersButton = document.getElementById('reset-filters');
 
-  renderPokemonsList({ pokemonList: initialBatch, node: pokemonListNode });
-  renderPokemonCounter();
-
-  handleOpenModalWithAccessibilityKeys();
   resetFiltersButton.addEventListener('click', resetFilters);
   loadMoreButton.addEventListener('click', loadNextPokemonBatchAndUpdateUI);
   applyFiltersButton.addEventListener('click', applyFilters);
   pokemonListNode.addEventListener('click', handlePokemonImgClick);
   searchInputNode.addEventListener('input', debounce(handleSearch, 500));
   colorFilterNode.addEventListener('click', handleColorClick);
-};
 
-const handleSearch = async (event) => {
-  const searchTerm = event?.target.value.trim().toLowerCase();
-  console.log('handleSearchDebounced', searchTerm);
+  renderPokemonsList({ pokemonList: initialBatch, node: pokemonListNode });
+  renderPokemonCounter();
+  handleOpenModalWithAccessibilityKeys();
 };
 
 initApp();
