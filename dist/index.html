@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>SEAT - Pokémon Viewer</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="shortcut icon" href="./assets/favicon-CozzslaF.ico">
+
+    <link  href="https://fonts.cdnfonts.com/css/pokemon-solid" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.cdnfonts.com/s/17890/Pokemon Solid.woff" crossorigin="anonymous" as="font" type="font/woff2" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+
+    <script src="https://cdn.jsdelivr.net/npm/less@4.2.0"></script>
+    <script type="module" crossorigin src="./assets/index-DM3FgmwN.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/style.css">
+  </head>
+  <body>
+    <div id="app">
+      <header>
+        <h1>Pokémon Viewer</h1>
+      </header>
+      <div id="menu-trigger">
+        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 50 50"><path fill="var(--pokemon-red)" d="M0 7.5v5h50v-5Zm0 15v5h50v-5Zm0 15v5h50v-5Z"/></svg>
+      </div>
+
+      <main tabindex="0">
+        <aside id="filters" class="filters">
+          <span id="close-filters">&times;</span>
+          <div class="filters__container">
+            <p class="filters__title">Filters</p>
+            <button class="filters__apply-filter-button" id="apply-filters" tabindex="0">Apply Filters</button>
+            <button class="filters__reset-filter-button" id="reset-filters" tabindex="0">Reset Filters</button>
+
+            <div class="filters__filter-group">
+              <label class="filter-title">Color:</label>
+              <div id="color-filter" class="pokemon__color"></div>
+            </div>
+
+            <div class="filters__filter-group">
+              <label class="filter-title">Gender:</label>
+              <div id="gender-filter" class="pokemon__gender"></div>
+            </div>
+
+            <div class="filters__filter-group">
+              <label class="filter-title">Type:</label>
+              <div id="type-filter" class="pokemon__types"></div>
+            </div>
+          </div>
+        </aside>
+
+        <section class="main-section">
+          <div class="search__container">
+            <div class="search__field">
+              <label class="title" for="search-input">Search</label>
+              <input type="text" id="search-input" class="search__input" placeholder="Enter a pokémon name" tabindex="0">
+              <p class="pokemon-count"></p>
+            </div>
+            <button type="button" id="load-more" class="main-section__add-button" tabindex="0">Load More</button>
+          </div>
+
+          <section id="pokemon-list" class="pokemon__list" tabindex="0"></section>
+        </section>
+      </main>
+    </div>
+
+    <div id="modal" class="modal">
+      <div class="modal__content">
+        <span class="close">&times;</span>
+        <div id="pokemon-details" class="pokemon__details"></div>
+      </div>
+    </div>
+
+
+  </body>
+</html>
