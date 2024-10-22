@@ -1,11 +1,17 @@
 import '../assets/css/styles.less'
 import { state } from './constants/state.js';
-import { debounce } from "./utilities/debounce";
 import { fetchPokemonNationalData } from './api/fetchPokemonNationalData.js'
 import { getPokemonFetchedData } from './api/getPokemonFetchedData.js';
 import { fetchFilterOptions } from './api/fetchFilterOptions.js';
-
-import { gatherSelectedFiltersData, getSelectedFilters, handleColorClick, handleOpenModalWithAccessibilityKeys, renderFilters, renderPokemonsList, resetFilters, showPokemonDetails } from './ui.js';
+import { gatherSelectedFiltersData } from './ui/gatherSelectedFiltersData.js';
+import { getSelectedFilters } from './ui/getSelectedFilters.js';
+import { handleColorClick } from './ui/handleColorClick.js';
+import { handleOpenModalWithAccessibilityKeys } from './ui/handleOpenModalWithAccessibilityKeys.js';
+import { renderFilters } from './ui/renderFilters.js';
+import { renderPokemonsList } from './ui/renderPokemonsList.js'
+import { resetFilters } from './ui/resetFilters.js';
+import { showPokemonDetails } from './ui/showPokemonDetails.js';
+import { debounce } from "./utilities/debounce";
 
 const initApp = async () => {
   await fetchPokemonNationalData().then((res) => res.pokemon_entries);
