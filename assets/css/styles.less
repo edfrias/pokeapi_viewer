@@ -33,7 +33,7 @@
   background-color: rgba(0, 0, 0, 0.4);
   overflow: hidden;
 
-  .modal__content {
+  &__content {
     align-items: center;
     background-color: white;
     border-radius: 5px;
@@ -73,7 +73,7 @@
 
     &:hover,
     &:focus {
-      color: red;
+      color: var(--pokemon-red);
       cursor: pointer;
       text-decoration: none;
     }
@@ -87,22 +87,8 @@ button, input[type='text'], input[type='radio'], input[type='checkbox'] {
   }
 }
 
-// Responsive design
-@media (max-width: 768px) {
-  main {
-    flex-direction: column;
-  }
-
-  aside {
-    width: 100%;
-    margin-bottom: 20px;
-  }
-
-  #pokemon-list {
-    padding-left: 0;
-  }
-}
 
 @import './scaffolding.less';
 @import './aside.less';
 @import './pokemon.less';
+@import './responsive.less';

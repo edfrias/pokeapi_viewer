@@ -15,8 +15,11 @@ body {
 }
 
 #app {
-  max-width: 1440px;
   margin: 0 auto;
+  max-width: 1440px;
+  overflow-x: hidden;
+  padding-inline: 24px;
+  width: 100%;
 }
 
 header {
@@ -46,6 +49,7 @@ header {
 
 main {
   display: flex;
+  flex-flow: row nowrap;
   min-height: 700px;
 }
 

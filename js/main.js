@@ -14,6 +14,7 @@ import { applyFilters } from './ui/applyFilters.js';
 import { handlePokemonImgClick } from './ui/handlePokemonImgClick.js';
 import { loadNextPokemonBatchAndUpdateUI } from './api/loadNextPokemonBatchAndUpdateUI.js';
 import { handleSearch } from './ui/handleSearch.js';
+import { handleResponsiveMenuVisibility } from './ui/handleResponsiveMenuVisibility.js';
 
 const initApp = async () => {
   await fetchPokemonNationalData().then((res) => res.pokemon_entries);
@@ -30,6 +31,7 @@ const initApp = async () => {
   const searchInputNode = document.getElementById('search-input');
   const colorFilterNode = document.getElementById('color-filter');
   const resetFiltersButton = document.getElementById('reset-filters');
+  const menuTrigger = document.getElementById('menu-trigger');
 
   resetFiltersButton.addEventListener('click', resetFilters);
   loadMoreButton.addEventListener('click', loadNextPokemonBatchAndUpdateUI);
@@ -37,6 +39,7 @@ const initApp = async () => {
   pokemonListNode.addEventListener('click', handlePokemonImgClick);
   searchInputNode.addEventListener('input', debounce(handleSearch, 500));
   colorFilterNode.addEventListener('click', handleColorClick);
+  menuTrigger.addEventListener('click', handleResponsiveMenuVisibility);
 
   renderPokemonsList({ pokemonList: initialBatch, node: pokemonListNode });
   renderPokemonCounter();

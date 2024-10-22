@@ -20,10 +20,14 @@
       <header>
         <h1>Pokémon Viewer</h1>
       </header>
+      <div id="menu-trigger">
+        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 50 50"><path fill="var(--pokemon-red)" d="M0 7.5v5h50v-5Zm0 15v5h50v-5Zm0 15v5h50v-5Z"/></svg>
+      </div>
 
       <main tabindex="0">
         <aside id="filters" class="filters">
-          <div>
+          <span id="close-filters">&times;</span>
+          <div class="filters__container">
             <p class="filters__title">Filters</p>
             <button class="filters__apply-filter-button" id="apply-filters" tabindex="0">Apply Filters</button>
             <button class="filters__reset-filter-button" id="reset-filters" tabindex="0">Reset Filters</button>
