@@ -9,7 +9,7 @@
   padding: 24px;
   position: sticky;
   top: 24px;
-  width: 200px;
+  width: 300px;
 
   &__title:extend(.pokemon-text) {
     display: block;
@@ -20,11 +20,11 @@
   }
 
   &__filter-group {
-    margin-bottom: 15px;
+    margin-bottom: 40px;
 
-    label {
+    .filter-title {
       display: block;
-      margin-bottom: 5px;
+      margin-bottom: 15px;
     }
 
     input[type="text"] {
@@ -36,37 +36,64 @@
   }
 
   &__apply-filter-button:extend(.button all) {
-    margin-block: 1rem 2rem;
+    margin-block: 1rem;
     width: 100%;
   }
 
-  // SEARCH FORM
-  .search {
-    &__container {
-      margin-block-end: 1.5rem;
-    }
+  &__reset-filter-button:extend(.button all) {
+    margin-block-end: 2rem;
+    background-color: #ccc;
+    width: 100%;
 
-    &__input {
-      caret-color: var(--pokemon-red);
-      border: 1px solid var(--pokemon-red);
-      border-radius: 2rem;
-      padding-inline: 1rem;
-      height: 2.3rem;
-      line-height: 2rem;
-
-      &::placeholder {
-        font-weight: bold;
-        color: var(--pokemon-red);
-      }
-
-      &:focus {
-        outline: 1px solid var(--pokemon-red);
-      }
+    &:hover {
+      background-color: #aaa;
     }
   }
 
   hr {
-    border-top: 2px solid var(--aside-border-bg);
+    border-top: 2px solid var(--pokemon-red);
     height: 0;
+  }
+
+  .pokemon {
+    &__color {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 5px;
+
+      .color-box {
+        align-items: center;
+        border-radius: 50%;
+        border: 2px solid transparent;
+        cursor: pointer;
+        display: flex;
+        flex-direction: column;
+        height: 30px;
+        justify-content: center;
+        width: 30px;
+
+        &.selected {
+          border-color: var(--pokemon-red);
+        }
+
+        &.white {
+          border: 1px solid #ccc;
+          svg {
+            filter: invert(100%);
+          }
+        }
+      }
+    }
+
+    &__gender {
+      display: flex;
+      flex-direction: column;
+    }
+
+    &__types {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5px;
+    }
   }
 }

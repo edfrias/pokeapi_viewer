@@ -1,8 +1,11 @@
 import '../assets/css/styles.less'
-import { state } from './state';
+import { state } from './constants/state.js';
 import { debounce } from "./utilities/debounce";
-import { fetchPokemonNationalData, getPokemonFetchedData } from './api.js';
-import { handleOpenModalWithAccessibilityKeys, renderPokemonsList, showPokemonDetails } from './ui.js';
+import { fetchPokemonNationalData } from './api/fetchPokemonNationalData.js'
+import { getPokemonFetchedData } from './api/getPokemonFetchedData.js';
+import { fetchFilterOptions } from './api/fetchFilterOptions.js';
+
+import { gatherSelectedFiltersData, getSelectedFilters, handleColorClick, handleOpenModalWithAccessibilityKeys, renderFilters, renderPokemonsList, resetFilters, showPokemonDetails } from './ui.js';
 
 const initApp = async () => {
   await fetchPokemonNationalData().then((res) => res.pokemon_entries);
@@ -10,17 +13,21 @@ const initApp = async () => {
     pokemonList: state.allPokemon, offset: 0, limit: 20
   });
 
-  console.log('initial state', state)
+  const filters = await fetchFilterOptions();
+  console.log(state)
+  renderFilters(filters);
 
   const loadMoreButton = document.getElementById('load-more');
   const applyFiltersButton = document.getElementById('apply-filters');
   const pokemonListNode = document.getElementById('pokemon-list');
   const searchInputNode = document.getElementById('search-input');
   const colorFilterNode = document.getElementById('color-filter');
+  const resetFiltersButton = document.getElementById('reset-filters');
 
   renderPokemonsList({ pokemonList: initialBatch, node: pokemonListNode });
-  handleOpenModalWithAccessibilityKeys();
 
+  handleOpenModalWithAccessibilityKeys();
+  resetFiltersButton.addEventListener('click', resetFilters);
   loadMoreButton.addEventListener('click', loadNextPokemonBatchAndUpdateUI);
   applyFiltersButton.addEventListener('click', applyFilters);
   pokemonListNode.addEventListener('click', handlePokemonImgClick);
@@ -52,10 +59,6 @@ const loadNextPokemonBatchAndUpdateUI = async () => {
   handleOpenModalWithAccessibilityKeys();
 };
 
-const applyFilters = () => {
-  console.log('applyFilters');
-};
-
 const handlePokemonImgClick = async (event) => {
   const target = event.target;
   await showPokemonDetails(target);
@@ -66,8 +69,21 @@ const handleSearch = async (event) => {
   console.log('handleSearchDebounced', searchTerm);
 };
 
-const handleColorClick = () => {
-  console.log('handleColorClick');
+export const applyFilters = async() => {
+  const pokemonListNode = document.getElementById('pokemon-list');
+  pokemonListNode.innerHTML = '';
+  state.selectedFilters.gender = document.querySelector('input[name="gender"]:checked')?.value;
+  state.selectedFilters.types = Array.from(document.querySelectorAll('input[name="type"]:checked'))?.map(filter => filter.value);
+  state.currentOffset = 0;
+  state.pokemonList = [];
+  state.filteredPokemons = [];
+
+  await gatherSelectedFiltersData(getSelectedFilters());
+
+  await getPokemonFetchedData({ pokemonList: state.filteredPokemons,
+    offset: 0, limit: 1000 });
+
+  renderPokemonsList({ pokemonList: state.pokemonList, node: pokemonListNode });
 };
 
 initApp();

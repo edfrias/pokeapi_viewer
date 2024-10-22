@@ -23,34 +23,36 @@
 
       <main tabindex="0">
         <aside id="filters" class="filters">
-          <div class="search__container">
-            <label class="filters__title" for="search-input">Search</label>
-            <input type="text" id="search-input" class="search__input" placeholder="Enter a pokémon name" tabindex="0">
-          </div>
-          <hr />
           <div>
             <p class="filters__title">Filters</p>
-            <button class="filters__apply-filter-button" id="apply-filters"  tabindex="0">Apply Filters</button>
+            <button class="filters__apply-filter-button" id="apply-filters" tabindex="0">Apply Filters</button>
+            <button class="filters__reset-filter-button" id="reset-filters" tabindex="0">Reset Filters</button>
+
             <div class="filters__filter-group">
-              <label>Color:</label>
-              <div id="color-filter" class="color-boxes"></div>
+              <label class="filter-title">Color:</label>
+              <div id="color-filter" class="pokemon__color"></div>
             </div>
+
             <div class="filters__filter-group">
-              <label>Gender:</label>
-              <div id="gender-filter" class="radio-group"></div>
+              <label class="filter-title">Gender:</label>
+              <div id="gender-filter" class="pokemon__gender"></div>
             </div>
+
             <div class="filters__filter-group">
-              <label>Type:</label>
-              <div id="type-filter" class="checkbox-group"></div>
+              <label class="filter-title">Type:</label>
+              <div id="type-filter" class="pokemon__types"></div>
             </div>
           </div>
         </aside>
 
         <section class="main-section">
-          <button type="button" id="load-more" class="main-section__add-button" tabindex="0">Load More</button>
+          <div class="search__container">
+            <label class="title" for="search-input">Search</label>
+            <input type="text" id="search-input" class="search__input" placeholder="Enter a pokémon name" tabindex="0">
+            <button type="button" id="load-more" class="main-section__add-button" tabindex="0">Load More</button>
+          </div>
 
           <section id="pokemon-list" class="pokemon__list" tabindex="0"></section>
-
         </section>
       </main>
     </div>

@@ -8,12 +8,15 @@ body {
   font-size: 16px;
   margin: 0;
   padding: 0;
+
+  * {
+    box-sizing: border-box;
+  }
 }
 
 #app {
-  max-width: 1200px;
+  max-width: 1440px;
   margin: 0 auto;
-  padding: 20px;
 }
 
 header {
@@ -36,22 +39,55 @@ header {
   font-weight: bold;
 
   &:hover {
-    background-color: #b32a0a;
+    background-color: #8f2c19;
     box-shadow: 3px 2px white;
   }
 }
 
 main {
   display: flex;
-  max-width: 1440px;
   min-height: 700px;
 }
 
 .main-section {
   width: 100%;
 
+  .search {
+    &__container {
+      align-items: center;
+      display: flex;
+      justify-content: center;
+      margin-block-end: 1.5rem;
+
+      .title:extend(.pokemon-text all) {
+        font-size: 1.7em;
+        line-height: 48px;
+      }
+    }
+
+    &__input {
+      caret-color: var(--pokemon-red);
+      border: 1px solid var(--pokemon-red);
+      border-radius: 2rem;
+      padding-inline: 1rem;
+      margin-inline: 1rem;
+      height: 2.3rem;
+      line-height: 2rem;
+      min-width: 400px;
+
+      &::placeholder {
+        font-weight: bold;
+        color: var(--pokemon-red);
+      }
+
+      &:focus {
+        outline: 1px solid var(--pokemon-red);
+      }
+    }
+  }
+
   // Load more button
   &__add-button:extend(.button all) {
-    margin-block-end: 24px;
+    margin: 0;
   }
 }
