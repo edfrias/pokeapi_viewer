@@ -1,15 +1,13 @@
 import { generatePokemonCardBgColor } from "./generatePokemonCardBgColor";
 
-export const createPokemonMarkup = async (pokemon) => {
+export const createPokemonMarkup = (pokemon) => {
   if(!pokemon) {
     console.error(`No pokemon information was provided for ${pokemon}`);
     return;
   }
 
-  const pokemonCardStyles = await generatePokemonCardBgColor(pokemon);
-
   return `
-    <div class="pokemon" style="${pokemonCardStyles}" tabindex="0">
+    <div class="pokemon" style="${generatePokemonCardBgColor(pokemon)}" tabindex="0">
       <div class="pokemon__img-container">
           <img class="pokemon__img" data-id="${pokemon.id}" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemon.id}.png" alt="Image for pokemon ${pokemon.name}">
       </div>

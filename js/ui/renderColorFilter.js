@@ -1,4 +1,9 @@
 export const renderColorFilter = (colors) => {
+  if(!colors || colors.length === 0) {
+    console.error('Invalid colors error');
+    return;
+  }
+
   const colorFilter = document.getElementById('color-filter');
 
   if(!colorFilter) {

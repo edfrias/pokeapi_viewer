@@ -46,6 +46,4 @@ export const gatherSelectedFiltersData = async (selectedFiltersData) => {
       })
     }
   });
-
-  console.log(state)
 };

@@ -13,5 +13,5 @@ export const renderPokemonsList = ({ pokemonList, node }) => {
   }
 
   node.classList.remove('no-results');
-  node.innerHTML = pokemonList.map(pokemon => createPokemonMarkup(pokemon)).join('');
+  node.innerHTML = pokemonList.map((pokemon) =>  createPokemonMarkup(pokemon)).join('');
 };

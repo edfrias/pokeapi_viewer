@@ -1,4 +1,9 @@
 export const renderGenderFilter = (genders) => {
+  if(!genders || genders.length === 0) {
+    console.error('Invalid genders error');
+    return;
+  }
+
   const genderFilter = document.getElementById('gender-filter');
 
   if(!genderFilter) {
