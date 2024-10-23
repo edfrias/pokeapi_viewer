@@ -5,8 +5,9 @@ import { getSelectedFilters } from "./getSelectedFilters";
 import { renderPokemonCounter } from "./renderPokemonCounter";
 import { renderPokemonsList } from "./renderPokemonsList";
 
-export const handleApplyFilters = async() => {
+export const handleApplyFilters = async () => {
   const pokemonListNode = document.getElementById('pokemon-list');
+  const spinnerNode = document.getElementById('loading');
 
   if(!pokemonListNode) {
     console.error('Invalid pokemonListNode error');
@@ -20,10 +21,14 @@ export const handleApplyFilters = async() => {
   state.pokemonList = [];
   state.filteredPokemons = [];
 
+  spinnerNode.style.display = 'flex';
+
   await gatherSelectedFiltersData(getSelectedFilters());
 
   await getPokemonFetchedData({ pokemonList: state.filteredPokemons,
     offset: 0, limit: 1000 });
+
+    spinnerNode.style.display = 'none';
 
   renderPokemonsList({ pokemonList: state.pokemonList, node: pokemonListNode });
   renderPokemonCounter();
