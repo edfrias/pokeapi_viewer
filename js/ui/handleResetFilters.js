@@ -1,7 +1,6 @@
 import { state } from "../constants/state";
 import { getPokemonFetchedData } from "../api/getPokemonFetchedData";
-import { renderPokemonsList } from "./renderPokemonsList";
-import { renderPokemonCounter } from "./renderPokemonCounter";
+import { renderPokemonListAndUpdateUi } from "./renderPokemonListAndUpdateUi";
 
 export const handleResetFilters = async () => {
   const pokemonListNode = document.getElementById('pokemon-list');
@@ -31,6 +30,6 @@ export const handleResetFilters = async () => {
   const initialBatch = await getPokemonFetchedData({
     pokemonList: state.allPokemon, offset: 0, limit: 20
   });
-  renderPokemonsList({ pokemonList: initialBatch, node: pokemonListNode });
-  renderPokemonCounter();
+  state.pokemonList = [...initialBatch];
+  renderPokemonListAndUpdateUi();
 };

@@ -1,8 +1,7 @@
 import { filterSearch } from "../api/filterSearch";
 import { getPokemonFetchedData } from "../api/getPokemonFetchedData";
 import { state } from "../constants/state";
-import { renderPokemonCounter } from "./renderPokemonCounter";
-import { renderPokemonsList } from "./renderPokemonsList";
+import { renderPokemonListAndUpdateUi } from "./renderPokemonListAndUpdateUi";
 
 export const handleSearch = async (event) => {
   if(!event) {
@@ -41,6 +40,5 @@ export const handleSearch = async (event) => {
 
   await getPokemonFetchedData({ pokemonList: state.filteredPokemons, offset: 0, limit: 1000 });
 
-  renderPokemonsList({ pokemonList: state.pokemonList, node: pokemonListNode });
-  renderPokemonCounter();
+  renderPokemonListAndUpdateUi();
 };
