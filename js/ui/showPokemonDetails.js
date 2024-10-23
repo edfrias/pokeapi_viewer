@@ -1,5 +1,4 @@
 import { fetchPokemonDetails } from "../api/fetchPokemonDetails";
-
 import { closeModal } from "./closeModal";
 import { handleEscKey } from "./handleEscKey";
 import { renderPokemonModalDetails } from "./renderPokemonModalDetails";
