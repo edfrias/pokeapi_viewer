@@ -3,7 +3,7 @@ import { getPokemonFetchedData } from "../api/getPokemonFetchedData";
 import { renderPokemonsList } from "./renderPokemonsList";
 import { renderPokemonCounter } from "./renderPokemonCounter";
 
-export const resetFilters = async () => {
+export const handleResetFilters = async () => {
   const pokemonListNode = document.getElementById('pokemon-list');
 
   state.selectedFilters = {

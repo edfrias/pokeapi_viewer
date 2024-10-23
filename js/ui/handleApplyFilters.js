@@ -5,7 +5,7 @@ import { getSelectedFilters } from "./getSelectedFilters";
 import { renderPokemonCounter } from "./renderPokemonCounter";
 import { renderPokemonsList } from "./renderPokemonsList";
 
-export const applyFilters = async() => {
+export const handleApplyFilters = async() => {
   const pokemonListNode = document.getElementById('pokemon-list');
   pokemonListNode.innerHTML = '';
   state.selectedFilters.gender = document.querySelector('input[name="gender"]:checked')?.value;

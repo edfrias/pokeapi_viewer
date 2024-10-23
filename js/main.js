@@ -4,21 +4,19 @@ import { fetchPokemonNationalData } from './api/fetchPokemonNationalData.js'
 import { getPokemonFetchedData } from './api/getPokemonFetchedData.js';
 import { fetchFilterOptions } from './api/fetchFilterOptions.js';
 import { handleColorClick } from './ui/handleColorClick.js';
-import { handleOpenModalWithAccessibilityKeys } from './ui/handleOpenModalWithAccessibilityKeys.js';
 import { renderFilters } from './ui/renderFilters.js';
-import { renderPokemonsList } from './ui/renderPokemonsList.js'
-import { resetFilters } from './ui/resetFilters.js';
+import { handleResetFilters } from './ui/handleResetFilters.js';
 import { debounce } from "./utilities/debounce";
-import { renderPokemonCounter } from './ui/renderPokemonCounter.js';
-import { applyFilters } from './ui/applyFilters.js';
+import { handleApplyFilters } from './ui/handleApplyFilters.js';
 import { handlePokemonImgClick } from './ui/handlePokemonImgClick.js';
-import { loadNextPokemonBatchAndUpdateUI } from './api/loadNextPokemonBatchAndUpdateUI.js';
 import { handleSearch } from './ui/handleSearch.js';
 import { handleResponsiveMenuVisibility } from './ui/handleResponsiveMenuVisibility.js';
+import { handleLoadMoreAndUpdateUi } from './ui/handleLoadMoreAndUpdateUi.js';
+import { renderPokemonListAndUpdateUi } from './ui/renderPokemonListAndUpdateUi.js';
 
 const initApp = async () => {
   await fetchPokemonNationalData().then((res) => res.pokemon_entries);
-  const initialBatch = await getPokemonFetchedData({
+  await getPokemonFetchedData({
     pokemonList: state.allPokemon, offset: 0, limit: 20
   });
 
@@ -33,17 +31,15 @@ const initApp = async () => {
   const resetFiltersButton = document.getElementById('reset-filters');
   const menuTrigger = document.getElementById('menu-trigger');
 
-  resetFiltersButton.addEventListener('click', resetFilters);
-  loadMoreButton.addEventListener('click', loadNextPokemonBatchAndUpdateUI);
-  applyFiltersButton.addEventListener('click', applyFilters);
+  resetFiltersButton.addEventListener('click', handleResetFilters);
+  loadMoreButton.addEventListener('click', handleLoadMoreAndUpdateUi);
+  applyFiltersButton.addEventListener('click', handleApplyFilters);
   pokemonListNode.addEventListener('click', handlePokemonImgClick);
   searchInputNode.addEventListener('input', debounce(handleSearch, 500));
   colorFilterNode.addEventListener('click', handleColorClick);
   menuTrigger.addEventListener('click', handleResponsiveMenuVisibility);
 
-  renderPokemonsList({ pokemonList: initialBatch, node: pokemonListNode });
-  renderPokemonCounter();
-  handleOpenModalWithAccessibilityKeys();
+  renderPokemonListAndUpdateUi();
 };
 
 initApp();
