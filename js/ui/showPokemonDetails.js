@@ -5,6 +5,11 @@ import { handleEscKey } from "./handleEscKey";
 import { renderPokemonModalDetails } from "./renderPokemonModalDetails";
 
 export const showPokemonDetails = async (node) => {
+  if(!node|| !(node instanceof Element)) {
+    console.error('Invalid node error');
+    return;
+  }
+
   if (node.classList.contains('pokemon__img')) {
     const pokemonId = node.dataset.id;
     const details = await fetchPokemonDetails(pokemonId);

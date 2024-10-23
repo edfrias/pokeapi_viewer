@@ -1,4 +1,9 @@
 export const renderTypeFilter = (types) => {
+  if(!types) {
+    console.error('Invalid types provided');
+    return;
+  }
+
   const typeFilter = document.getElementById('type-filter');
 
   typeFilter.innerHTML = types.map(type => `

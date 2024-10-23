@@ -16,9 +16,7 @@ export const gatherSelectedFiltersData = async (selectedFiltersData) => {
   const filtersResult = await Promise.all(filterPromises);
 
   filtersResult.forEach(filter => {
-    // Color filter data
     if(filter.pokemon_species?.length) {
-      console.log('color');
       filter.pokemon_species.forEach(filteredPokemon => {
         const nationalPokemonFiltered = state.allPokemon.find(nationalPokemon => nationalPokemon.pokemon_species.name === filteredPokemon.name);
 
@@ -28,9 +26,7 @@ export const gatherSelectedFiltersData = async (selectedFiltersData) => {
       })
     }
 
-    // Gender filter data
     if(filter.pokemon_species_details?.length) {
-      console.log('gender');
       filter.pokemon_species_details.forEach(filteredPokemon => {
         const nationalPokemonFiltered = state.allPokemon.find(nationalPokemon => nationalPokemon.pokemon_species.name === filteredPokemon.pokemon_species.name);
 
@@ -40,9 +36,7 @@ export const gatherSelectedFiltersData = async (selectedFiltersData) => {
       })
     }
 
-    // Types filter data
     if(filter.pokemon?.length) {
-      console.log('types');
       filter.pokemon.forEach(filteredPokemon => {
         const nationalPokemonFiltered = state.allPokemon.find(nationalPokemon => nationalPokemon.pokemon_species.name === filteredPokemon.pokemon.name);
 

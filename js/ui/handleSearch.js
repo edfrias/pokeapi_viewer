@@ -6,14 +6,32 @@ import { renderPokemonsList } from "./renderPokemonsList";
 
 export const handleSearch = async (event) => {
   if(!event) {
-    console.error('No criteria was provided in order to search');
+    console.error('No criteria was provided');
+    return;
   }
 
   const pokemonListNode = document.getElementById('pokemon-list');
+
+  if(!pokemonListNode) {
+    console.error('Invalid pokemonListNode error');
+    return;
+  }
+
   pokemonListNode.innerHTML = '';
 
   const searchTerm = event?.target.value.trim().toString().toLowerCase();
+
+  if(!searchTerm) {
+    console.error('Invalid searchTerm error');
+    return;
+  }
+
   const pokemonsToSearch = filterSearch(searchTerm);
+
+  if(!pokemonsToSearch) {
+    console.error('Invalid pokemonsToSearch error');
+    return;
+  }
 
   state.currentOffset = 0;
   state.pokemonList = [];

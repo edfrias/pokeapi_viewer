@@ -14,7 +14,7 @@ import { handleResponsiveMenuVisibility } from './ui/handleResponsiveMenuVisibil
 import { handleLoadMoreAndUpdateUi } from './ui/handleLoadMoreAndUpdateUi.js';
 import { renderPokemonListAndUpdateUi } from './ui/renderPokemonListAndUpdateUi.js';
 
-const initApp = async () => {
+(async () => {
   await fetchPokemonNationalData().then((res) => res.pokemon_entries);
   await getPokemonFetchedData({
     pokemonList: state.allPokemon, offset: 0, limit: 20
@@ -40,6 +40,4 @@ const initApp = async () => {
   menuTrigger.addEventListener('click', handleResponsiveMenuVisibility);
 
   renderPokemonListAndUpdateUi();
-};
-
-initApp();
+})();

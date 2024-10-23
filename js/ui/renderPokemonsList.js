@@ -9,6 +9,7 @@ export const renderPokemonsList = ({ pokemonList, node }) => {
 
   if (!node || !(node instanceof Element)) {
     console.error('Node was not provided or is invalid.');
+    return;
   }
 
   node.classList.remove('no-results');

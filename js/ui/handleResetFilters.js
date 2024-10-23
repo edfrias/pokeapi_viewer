@@ -6,6 +6,11 @@ import { renderPokemonCounter } from "./renderPokemonCounter";
 export const handleResetFilters = async () => {
   const pokemonListNode = document.getElementById('pokemon-list');
 
+  if(!pokemonListNode) {
+    console.error('Invalid node error');
+    return;
+  }
+
   state.selectedFilters = {
     color: [],
     gender: '',

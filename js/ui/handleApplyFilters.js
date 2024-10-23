@@ -7,6 +7,12 @@ import { renderPokemonsList } from "./renderPokemonsList";
 
 export const handleApplyFilters = async() => {
   const pokemonListNode = document.getElementById('pokemon-list');
+
+  if(!pokemonListNode) {
+    console.error('Invalid pokemonListNode error');
+    return;
+  }
+
   pokemonListNode.innerHTML = '';
   state.selectedFilters.gender = document.querySelector('input[name="gender"]:checked')?.value;
   state.selectedFilters.types = Array.from(document.querySelectorAll('input[name="type"]:checked'))?.map(filter => filter.value);

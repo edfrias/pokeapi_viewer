@@ -2,6 +2,10 @@ import { showPokemonDetails } from "./showPokemonDetails";
 
 export const handleOpenModalWithAccessibilityKeys = () => {
   const pokemonNodes = document.querySelectorAll(".pokemon");
+  if(!pokemonNodes) {
+    console.error('Invalid pokemonNodes error');
+    return;
+  }
 
   pokemonNodes.forEach(node =>
     node.addEventListener('keydown', function(event) {
