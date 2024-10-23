@@ -1,5 +1,5 @@
 {
-  "name": "seat-pokeapi-viewer",
+  "name": "pokeapi-viewer",
   "private": true,
   "version": "0.0.0",
   "type": "module",
