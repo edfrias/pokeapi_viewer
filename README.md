@@ -2,6 +2,8 @@
 
 A modern web application that allows users to browse, search, and filter Pokémon using the PokéAPI. Built with vanilla JavaScript and Vite.
 
+You can check the app [here](https://edfrias.github.io/pokeapi_viewer/).
+
 ## Features
 
 - Search Pokémon by name
