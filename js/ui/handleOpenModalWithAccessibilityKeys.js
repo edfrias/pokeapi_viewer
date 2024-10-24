@@ -1,7 +1,7 @@
-import { showPokemonDetails } from "./showPokemonDetails";
+import { showPokemonDetails } from './showPokemonDetails';
 
 export const handleOpenModalWithAccessibilityKeys = () => {
-  const pokemonNodes = document.querySelectorAll(".pokemon");
+  const pokemonNodes = document.querySelectorAll('.pokemon');
   if(!pokemonNodes) {
     console.error('Invalid pokemonNodes error');
     return;
