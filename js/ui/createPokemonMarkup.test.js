@@ -16,14 +16,14 @@ describe('createPokemonMarkup', () => {
     expect(consoleErrorSpy).toHaveBeenCalledWith('No pokemon information was provided for null');
   });
 
-  it.skip('should return correct HTML markup for a valid Pokémon', () => {
+  it('should return correct HTML markup for a valid Pokémon', async () => {
     const pokemon = {
       id: 1,
       name: 'bulbasaur',
       types: ['grass', 'poison']
     };
 
-    vi.mocked(generatePokemonCardBgColor).mockResolvedValue('--typeColor:var(--type-grass); --secondary-typeColor:var(--type-poison);');
+    generatePokemonCardBgColor.mockImplementation(() => '--typeColor:var(--type-grass); --secondary-typeColor:var(--type-poison);');
 
     const expectedMarkup = `
     <div class="pokemon" style="--typeColor:var(--type-grass); --secondary-typeColor:var(--type-poison);" tabindex="0">
